@@ -1,0 +1,9 @@
+#!/usr/bin/ruby
+# Ruby front-end for your compiler.
+# You are free to change the language used for this script,
+# but do *not* change its name.
+
+puts("Compiling...")
+FILE = ARGV[0]
+system("java -cp lib/antlr-4.9.1-complete.jar:lib/waccLexerParser.jar:bin wacc.WaccCompiler #{FILE}")
+exit($?.exitstatus)

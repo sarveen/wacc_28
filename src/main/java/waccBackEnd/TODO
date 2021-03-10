@@ -1,0 +1,14 @@
+TODO:
+1. Add Label and Pop Instructions inside ARM11Instructions directory.
+2. Implement representation of a single ARM11 register (must store it's name as
+   per ARM spec, e.g. r0, r1, pc, lr).
+3. Implement representation of 16 general ARM11 registers, r0-r12, sp, lr and pc.
+4. Implement visit methods in CodeGenerator which will add necessary instructions
+   to the current function in the ARM11ProgramRepresentation.
+5. For runtime errors whenever there is a possibility of an error we add instructions to check that and labels
+    to go to if an error is detected
+    - Divide By Zero
+    - Array out of bounds
+    - Null Ptr (This will be when we access a memory location which stores nothing)
+    - Overflow (32 bit registers)
+6. Maybe exit instruction not needed can be replaced by a branch instruction

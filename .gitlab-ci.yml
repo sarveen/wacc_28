@@ -1,0 +1,30 @@
+image: mipi2610/wacc_28:latest
+
+stages:
+  - compile
+  - test_front_end
+  - test_back_end
+
+default:
+  before_script:
+    - make
+
+compile:
+  stage: compile
+  script: mvn compile
+
+test_invalid_syntax:
+  stage: test_front_end
+  script: mvn -DTest=WaccCompilerInvalidSyntaxUnitTest test
+
+test_invalid_semantic:
+  stage: test_front_end
+  script: mvn -DTest=WaccCompilerInvalidSemanticUnitTest test
+
+test_valid:
+    stage: test_front_end
+    script: mvn -Dtest=WaccCompilerValidUnitTest test
+
+test_back_end:
+  stage: test_back_end
+  script: mvn -Dtest=WaccCompilerBackEndTest test
